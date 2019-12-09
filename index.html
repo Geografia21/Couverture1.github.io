@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1305px;
+            height: 673px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Fokontany_0.js"></script>
+        <script src="data/Mada_1.js"></script>
+        <script src="data/Rayon15Km_2.js"></script>
+        <script src="data/SiteRural_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-20.63975541453986,43.849512069886345],[-17.09433538953986,50.73428448803091]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Fokontany_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_FKT'] !== null ? Autolinker.link(String(feature.properties['ID_FKT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Fokontany'] !== null ? Autolinker.link(String(feature.properties['Fokontany'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Commune'] !== null ? Autolinker.link(String(feature.properties['Commune'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['District'] !== null ? Autolinker.link(String(feature.properties['District'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Region'] !== null ? Autolinker.link(String(feature.properties['Region'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Milieu'] !== null ? Autolinker.link(String(feature.properties['Milieu'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Population'] !== null ? Autolinker.link(String(feature.properties['Population'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre_de_'] !== null ? Autolinker.link(String(feature.properties['Nombre_de_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Surface_Fo'] !== null ? Autolinker.link(String(feature.properties['Surface_Fo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Densit�_'] !== null ? Autolinker.link(String(feature.properties['Densit�_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Radius_'] !== null ? Autolinker.link(String(feature.properties['Radius_'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Fokontany_0_0() {
+            return {
+                pane: 'pane_Fokontany_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Fokontany_0');
+        map.getPane('pane_Fokontany_0').style.zIndex = 400;
+        map.getPane('pane_Fokontany_0').style['mix-blend-mode'] = 'normal';
+        var layer_Fokontany_0 = new L.geoJson(json_Fokontany_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Fokontany_0',
+            layerName: 'layer_Fokontany_0',
+            pane: 'pane_Fokontany_0',
+            onEachFeature: pop_Fokontany_0,
+            style: style_Fokontany_0_0,
+        });
+        bounds_group.addLayer(layer_Fokontany_0);
+        map.addLayer(layer_Fokontany_0);
+        function pop_Mada_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Region'] !== null ? Autolinker.link(String(feature.properties['Region'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Reg_pcode'] !== null ? Autolinker.link(String(feature.properties['Reg_pcode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['R_code'] !== null ? Autolinker.link(String(feature.properties['R_code'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Milieu'] !== null ? Autolinker.link(String(feature.properties['Milieu'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Code_provi'] !== null ? Autolinker.link(String(feature.properties['Code_provi'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Province'] !== null ? Autolinker.link(String(feature.properties['Province'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Population'] !== null ? Autolinker.link(String(feature.properties['Population'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre_de_'] !== null ? Autolinker.link(String(feature.properties['Nombre_de_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Surface_R�'] !== null ? Autolinker.link(String(feature.properties['Surface_R�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Densit�_'] !== null ? Autolinker.link(String(feature.properties['Densit�_'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Mada_1_0() {
+            return {
+                pane: 'pane_Mada_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Mada_1');
+        map.getPane('pane_Mada_1').style.zIndex = 401;
+        map.getPane('pane_Mada_1').style['mix-blend-mode'] = 'normal';
+        var layer_Mada_1 = new L.geoJson(json_Mada_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Mada_1',
+            layerName: 'layer_Mada_1',
+            pane: 'pane_Mada_1',
+            onEachFeature: pop_Mada_1,
+            style: style_Mada_1_0,
+        });
+        bounds_group.addLayer(layer_Mada_1);
+        map.addLayer(layer_Mada_1);
+        function pop_Rayon15Km_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Ring_'] !== null ? Autolinker.link(String(feature.properties['Ring_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Radius_'] !== null ? Autolinker.link(String(feature.properties['Radius_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Dist_Units'] !== null ? Autolinker.link(String(feature.properties['Dist_Units'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area_'] !== null ? Autolinker.link(String(feature.properties['Area_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area_Units'] !== null ? Autolinker.link(String(feature.properties['Area_Units'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Rayon15Km_2_0() {
+            return {
+                pane: 'pane_Rayon15Km_2',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,113,88,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Rayon15Km_2');
+        map.getPane('pane_Rayon15Km_2').style.zIndex = 402;
+        map.getPane('pane_Rayon15Km_2').style['mix-blend-mode'] = 'normal';
+        var layer_Rayon15Km_2 = new L.geoJson(json_Rayon15Km_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Rayon15Km_2',
+            layerName: 'layer_Rayon15Km_2',
+            pane: 'pane_Rayon15Km_2',
+            onEachFeature: pop_Rayon15Km_2,
+            style: style_Rayon15Km_2_0,
+        });
+        bounds_group.addLayer(layer_Rayon15Km_2);
+        map.addLayer(layer_Rayon15Km_2);
+        function pop_SiteRural_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Site_ID</strong><br />' + (feature.properties['Site_ID'] !== null ? Autolinker.link(String(feature.properties['Site_ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site_Name'] !== null ? Autolinker.link(String(feature.properties['Site_Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Fokontany'] !== null ? Autolinker.link(String(feature.properties['Fokontany'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Commune'] !== null ? Autolinker.link(String(feature.properties['Commune'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['District'] !== null ? Autolinker.link(String(feature.properties['District'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Region'] !== null ? Autolinker.link(String(feature.properties['Region'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Urbain'] !== null ? Autolinker.link(String(feature.properties['Urbain'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Suburbain'] !== null ? Autolinker.link(String(feature.properties['Suburbain'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Rural'] !== null ? Autolinker.link(String(feature.properties['Rural'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Statut_1'] !== null ? Autolinker.link(String(feature.properties['Statut_1'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SiteRural_3_0() {
+            return {
+                pane: 'pane_SiteRural_3',
+                radius: 1.6000000000000005,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_SiteRural_3');
+        map.getPane('pane_SiteRural_3').style.zIndex = 403;
+        map.getPane('pane_SiteRural_3').style['mix-blend-mode'] = 'normal';
+        var layer_SiteRural_3 = new L.geoJson(json_SiteRural_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_SiteRural_3',
+            layerName: 'layer_SiteRural_3',
+            pane: 'pane_SiteRural_3',
+            onEachFeature: pop_SiteRural_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_SiteRural_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_SiteRural_3);
+        map.addLayer(layer_SiteRural_3);
+        setBounds();
+        </script>
+    </body>
+</html>
